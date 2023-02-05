@@ -25,7 +25,8 @@ public class Hooks {
 	public static ExtentTest extentTest;
 	public static ExtentReports reports = new ExtentReports("target/extent-report.html");
 
-    @Before
+
+	@Before
     public void setUp() {
         DriverSingleton.getInstance(Constants.CHROME);
         driver = DriverSingleton.getDriver();
@@ -48,7 +49,7 @@ public class Hooks {
     	reports.endTest(extentTest);
     	reports.flush();
     }
-
+    
     @AfterAll
     public static void closeBrowser() {
         delay(3);

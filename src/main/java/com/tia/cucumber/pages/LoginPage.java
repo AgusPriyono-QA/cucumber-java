@@ -6,6 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import com.tia.cucumber.drivers.DriverSingleton;
+import com.tia.cucumber.utils.Constants;
 
 public class LoginPage {
 
@@ -16,29 +17,39 @@ public class LoginPage {
         PageFactory.initElements(driver, this);
     }
     
-    @FindBy(xpath = "//input[@placeholder='Username']")
+    @FindBy(id = Constants.usernameID)
     WebElement inputUsername;
     
-    @FindBy(xpath = "//input[@placeholder='Password']")
+    @FindBy(id = Constants.passwordID)
     WebElement inputPassword;
     
-	@FindBy(xpath = "//button[@type='submit']")
+	@FindBy(xpath = Constants.buttonLoginID)
 	WebElement btnLogin;
 	
-	@FindBy(xpath = "//h6[@class='oxd-text oxd-text--h6 oxd-topbar-header-breadcrumb-module']")
-	WebElement txtDashboard;
+	@FindBy(id = Constants.remembermeID)
+	WebElement rememberMeCheckbox;
 	
-	public void login(String username, String password) {
+	@FindBy(xpath = Constants.textValidationLoginID)
+	WebElement textValidationLogin;
+	
+	public void inputUsername(String username) {
 		inputUsername.sendKeys(username);
+	}
+	
+	public void inputPassword(String password) {
 		inputPassword.sendKeys(password);
 	}
 	
+	public void clickRememberMe() {
+		rememberMeCheckbox.click();
+	}
+		
 	public void clickBtnLogin() {
 		btnLogin.click();
 	}
 	
-	public String getTxtDashboard() {
-		return txtDashboard.getText();
+	public String getTextValidationLogin() {
+		return textValidationLogin.getText();
 	}
 	
 }

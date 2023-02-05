@@ -3,7 +3,7 @@ package com.tia.cucumber.utils;
 public enum TestScenarios {
 
 	T1("User valid login"),
-	T2("User on Dashboard");
+	T2("User create order success");
 //	T1000
 	
 	private String testName;
